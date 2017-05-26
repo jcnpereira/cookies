@@ -1,0 +1,40 @@
+﻿
+@{
+	ViewBag.Title = "Cookies";
+}
+
+<br /><br />
+
+<h4>Adição, Visualização e Eliminação de <i>Cookies</i></h4>
+
+<br />
+@Html.ValidationSummary(true,"",new { @class = "text-danger" })
+
+@using(Html.BeginForm("AddCookie","Home",FormMethod.Post)) {
+	<div>
+		Qual o seu meio de transporte preferido?<br />
+		<input name="tipoTransporte" type="radio" value="Automóvel" /> Automóvel <br />
+		<input name="tipoTransporte" type="radio" value="Autocarro" /> Autocarro <br />
+		<input name="tipoTransporte" type="radio" value="Bicicleta" /> Bicicleta <br />
+		<input name="tipoTransporte" type="radio" value="Comboio" /> Comboio <br />
+		<br />
+		<input type="submit" value=" Guardar dados num Cookie " />
+		<input type="reset" value="Repor" />
+	</div>
+}
+
+<br /><br />
+
+@if(!string.IsNullOrEmpty((string)ViewBag.UltimaVisita)) {
+	<div>
+		A última vez que nos visitou foi no dia <b> @ViewBag.UltimaVisita</b>, e disse que o seu meio de transporte preferido era: <b> @ViewBag.Transporte</b>
+	</div>
+}
+
+<br /><br />
+
+@using(Html.BeginForm("DeleteCookie","Home",FormMethod.Post)) {
+	<div>
+		Para anular todos os <i> cookies</i>, clique <input type="submit" value="aqui" />
+	</div>
+}
